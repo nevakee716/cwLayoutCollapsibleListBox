@@ -49,6 +49,8 @@
         output.push(" data-node-id='", nodeSchema.NodeID, "'");
         if (!cwApi.isUndefined(objectId)) {
             output.push(" data-source-id='", objectId, "'");
+        } else {
+            objectId = 0;
         }
         output.push(" class='property-box ", layout.nodeID, "-node-box property-box-asso collapsible-list-box");
         if (associationTargetNode.length > 0 || cwApi.queryObject.isEditMode()) {

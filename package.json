@@ -1,0 +1,21 @@
+{
+  "name": "cwLayoutCollapsibleListBox",
+  "description": "Allow you to expand/collable a list box",
+  "version": "0.0.1",
+  "main": "cwLayoutCollapsibleListBox.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JGrndn/cwLayoutCollapsibleListBox"
+  },
+  "author": "Jerome GRONDIN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JGrndn/cwLayoutCollapsibleListBox/issues"
+  },
+  "homepage": "",
+  "wiki": "https://github.com/JGrndn/cwLayoutCollapsibleListBox/wiki",
+  "evolve-version": "4.0 - 4.2"
+}

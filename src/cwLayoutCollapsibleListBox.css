@@ -1,0 +1,47 @@
+/* GLOBAL */
+/* LOGIN */
+/* DIAGRAM */
+/* HOME PAGE */
+/* MENU LEFT */
+/* MAIN MENU */
+/* SUB MENU */
+/* PAGE TAB */
+/* DROPDOWN NOTIFICATIONS */
+/* SOCIAL */
+/* LIST BOX */
+/* PROPERTIES GROUP */
+/* BUTTONS */
+/* PAGE ACTIONS */
+/* ACCORDIONS */
+/* DISCUSSIONS */
+/* WORLD MAP */
+/* USER ZONE */
+/* POPUP */
+/* BADGES */
+/* TASKS & NOTIFICATIONS */
+/* GLOBAL SEARCH */
+/* TOP BAR */
+/* GRID */
+/* DIAGRAM TILE */
+/* MATRIX ADVANCED */
+.htmlbox-container .htmlbox-header-icon .htmlbox-header-icon-min {
+  background-color: #03a0ce;
+}
+tr.k-alt div.property-box {
+  background-color: #f1f1f1;
+}
+tr.k-alt ul.property-details .property-title {
+  background-color: #f1f1f1;
+}
+tr.k-alt ul.property-details .property-value {
+  border: 1px solid #f1f1f1;
+}
+.k-grid-content tr:hover div.property-box {
+  background-color: #cfc9c5;
+}
+.k-grid-content tr:hover ul.property-details .property-title {
+  background-color: #cfc9c5;
+}
+.k-grid-content tr:hover ul.property-details .property-value {
+  border: 1px solid #cfc9c5;
+}

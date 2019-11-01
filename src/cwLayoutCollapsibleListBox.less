@@ -3,5 +3,35 @@
 @box-radius: @cwBorderRadius;
 
 .htmlbox-container .htmlbox-header-icon .htmlbox-header-icon-min {
-    background-color: @cwColor1;
+  background-color: @cwColor1;
+}
+
+tr.k-alt {
+  div.property-box {
+    background-color: @cwDiagramEditorMenuBackgroundColor;
+  }
+  ul.property-details {
+    .property-title {
+      background-color: @cwDiagramEditorMenuBackgroundColor;
+    }
+    .property-value {
+      border: 1px solid @cwDiagramEditorMenuBackgroundColor;
+    }
+  }
+}
+
+.k-grid-content {
+  tr:hover {
+    div.property-box {
+      background-color: #cfc9c5;
+    }
+    ul.property-details {
+      .property-title {
+        background-color: #cfc9c5;
+      }
+      .property-value {
+        border: 1px solid #cfc9c5;
+      }
+    }
+  }
 }

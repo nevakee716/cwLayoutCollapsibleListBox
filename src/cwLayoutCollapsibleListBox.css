@@ -27,6 +27,19 @@
 .htmlbox-container .htmlbox-header-icon .htmlbox-header-icon-min {
   background-color: #03a0ce;
 }
+div.property-box ul.htmlbox-container div.htmlbox-header-icon {
+  float: left;
+  display: contents;
+}
+div.property-box ul.htmlbox-container div.htmlbox-header-icon .fa {
+  margin-right: 10px;
+}
+.k-grid-content div.property-box ul.htmlbox-container .cw-property-details-right {
+  width: 0px;
+}
+.k-grid-content div.property-box ul.htmlbox-container div.cw-property-details-left {
+  width: 100%;
+}
 tr.k-alt div.property-box {
   background-color: #f1f1f1;
 }

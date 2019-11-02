@@ -74,7 +74,18 @@
     output.push(">");
 
     output.push('<div class="cw-property-details-left">');
-    output.push('<label class="cw-property-title-displayname">', this.title, "</label>");
+    output.push('<div class="htmlbox-header-icon">');
+
+    if (associationTargetNode.length !== 0) {
+      output.push('<div id="htmlbox-', this.nodeID, "-", objectId, '" class="');
+      if (this.options.CustomOptions["collapse"] === true) {
+        output.push("fa fa-plus");
+      } else {
+        output.push("fa fa-minus");
+      }
+      output.push('"></div>');
+      output.push('<label class="cw-property-title-displayname">', this.title, "</label></div>");
+    }
     output.push("</div>");
 
     output.push('<div class="cw-property-details-right">');
@@ -88,15 +99,7 @@
       ot = cwApi.mm.getObjectType(nodeSchema.ObjectTypeScriptName.toLowerCase());
       cwApi.cwEditProperties.appendAssociationActionLink(output, layout.nodeID, objectId, ot.name);
     }
-    if (associationTargetNode.length !== 0) {
-      output.push('<div class="htmlbox-header-icon"><div id="htmlbox-', layout.nodeID, "-", objectId, '" class="');
-      if (this.options.CustomOptions["collapse"] === true) {
-        output.push("fa fa-plus");
-      } else {
-        output.push("fa fa-minus");
-      }
-      output.push('"></div></div>');
-    }
+
     output.push("</div>");
     if (canAddAssociation === true) {
       cwApi.cwEditProperties.appendAssociationSelect(output, layout.nodeID, objectId);

@@ -84,8 +84,9 @@
         output.push("fa fa-minus");
       }
       output.push('"></div>');
-      output.push('<label class="cw-property-title-displayname">', this.title, "</label></div>");
+     
     }
+    output.push('<label class="cw-property-title-displayname">', this.title, "</label></div>");
     output.push("</div>");
 
     output.push('<div class="cw-property-details-right">');

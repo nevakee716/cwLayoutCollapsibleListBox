@@ -154,8 +154,8 @@
 
   cwLayoutCollapsibleListBox.click = function (htmlID) {
     var listBoxHtml = document.getElementById("htmlbox-" + htmlID);
-
-    if (cwApi.queryObject.isEditMode() && listBoxHtml.className.indexOf("minus") !== -1) {
+    var isShrinking = listBoxHtml.className.indexOf("minus") !== -1;
+    if (cwApi.queryObject.isEditMode() && isShrinking) {
       return;
     }
     $("#" + htmlID + "-value").toggle("100", function () {
@@ -170,6 +170,9 @@
       let box = $("#htmlbox-" + htmlID);
       box.parents(".collapsible-list-boxcw-visible");
       $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-boxcw-visible").height() + 7);
+      setTimeout(function () {
+        $('[data-uid="' + uid + '"]').height(box.parents("tr").height());
+      }, 500);
     }, 500);
   };
 

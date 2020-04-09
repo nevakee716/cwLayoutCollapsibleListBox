@@ -1,11 +1,11 @@
 /* Copyright (c) 2012-2013 Casewise Systems Ltd (UK) - All rights reserved */
 /*global cwAPI, jQuery*/
 
-(function(cwApi, $) {
+(function (cwApi, $) {
   "use strict";
   var cwLayoutCollapsibleListBox;
 
-  cwLayoutCollapsibleListBox = function(options, viewSchema) {
+  cwLayoutCollapsibleListBox = function (options, viewSchema) {
     cwApi.extend(this, cwApi.cwLayouts.CwLayout, options, viewSchema);
     this.drawOneMethod = cwApi.cwLayouts.cwLayoutList.drawOne.bind(this);
     cwApi.registerLayoutForJSActions(this);
@@ -18,12 +18,12 @@
     this.collapse = this.options.CustomOptions["collapse"];
   };
 
-  cwLayoutCollapsibleListBox.prototype.drawAssociations = function(output, associationTitleText, object) {
+  cwLayoutCollapsibleListBox.prototype.drawAssociations = function (output, associationTitleText, object) {
     /*jslint unparam:true*/
     this.drawListBox(output, object);
   };
 
-  cwLayoutCollapsibleListBox.prototype.drawListBox = function(output, object) {
+  cwLayoutCollapsibleListBox.prototype.drawListBox = function (output, object) {
     var l, listBoxNameFromNode, associationTypeScriptName, associationTargetNode, objectId, canAddAssociation, ot, nodeSchema, layout;
 
     layout = this;
@@ -152,24 +152,24 @@
     output.push("</div>");
   };
 
-  cwLayoutCollapsibleListBox.click = function(htmlID) {
+  cwLayoutCollapsibleListBox.click = function (htmlID) {
     var listBoxHtml = document.getElementById("htmlbox-" + htmlID);
 
     if (cwApi.queryObject.isEditMode() && listBoxHtml.className.indexOf("minus") !== -1) {
       return;
     }
-    $("#" + htmlID + "-value").toggle("100", function() {
+    $("#" + htmlID + "-value").toggle("100", function () {
       $("#htmlbox-" + htmlID)
         .toggleClass("fa fa-minus")
         .toggleClass("fa fa-plus");
     });
-    setTimeout(function() {
+    setTimeout(function () {
       let row = $("#htmlbox-" + htmlID).parents("tr");
       let uid = row.attr("data-uid");
       if (row === undefined) return;
       let box = $("#htmlbox-" + htmlID);
       box.parents(".collapsible-list-boxcw-visible");
-      $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-boxcw-visible").height() + 20);
+      $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-boxcw-visible").height());
     }, 500);
   };
 

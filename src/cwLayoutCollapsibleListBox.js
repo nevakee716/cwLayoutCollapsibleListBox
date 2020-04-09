@@ -9,7 +9,7 @@
     cwApi.extend(this, cwApi.cwLayouts.CwLayout, options, viewSchema);
     this.drawOneMethod = cwApi.cwLayouts.cwLayoutList.drawOne.bind(this);
     cwApi.registerLayoutForJSActions(this);
-
+    this.viewSchema = viewSchema;
     if (this.options.CustomOptions["title"] !== "") {
       this.title = this.options.CustomOptions["title"];
     } else {
@@ -69,7 +69,21 @@
     output.push("'>");
     output.push('<ul class="htmlbox-container property-details ', layout.nodeID, "-details ", layout.nodeID, "-", objectId, '-details">');
     this.htmlID = layout.nodeID + "-" + objectId;
-    output.push('<li id="htmlbox-header-', layout.nodeID, "-", objectId, '" class="htmlbox-header property-details ', layout.nodeID, "-details property-title ", layout.nodeID, "-title ", layout.nodeID, "-", objectId, '-details"');
+    output.push(
+      '<li id="htmlbox-header-',
+      layout.nodeID,
+      "-",
+      objectId,
+      '" class="htmlbox-header property-details ',
+      layout.nodeID,
+      "-details property-title ",
+      layout.nodeID,
+      "-title ",
+      layout.nodeID,
+      "-",
+      objectId,
+      '-details"'
+    );
     if (associationTargetNode.length !== 0) output.push(" onClick=\"cwAPI.cwLayouts.cwLayoutCollapsibleListBox.click('", this.htmlID, "')\"");
     output.push(">");
 
@@ -84,7 +98,6 @@
         output.push("fa fa-minus");
       }
       output.push('"></div>');
-     
     }
     output.push('<label class="cw-property-title-displayname">', this.title, "</label></div>");
     output.push("</div>");
@@ -95,7 +108,14 @@
 
     if (canAddAssociation === true) {
       if (!cwApi.cwEditProperties.isObjectTypeForbiddenToAdd(nodeSchema.ObjectTypeScriptName)) {
-        cwApi.cwEditProperties.appendAddNewAssociationInput(output, layout.nodeID, objectId, layout, nodeSchema.NodeName, nodeSchema.ObjectTypeScriptName);
+        cwApi.cwEditProperties.appendAddNewAssociationInput(
+          output,
+          layout.nodeID,
+          objectId,
+          layout,
+          nodeSchema.NodeName,
+          nodeSchema.ObjectTypeScriptName
+        );
       }
       ot = cwApi.mm.getObjectType(nodeSchema.ObjectTypeScriptName.toLowerCase());
       cwApi.cwEditProperties.appendAssociationActionLink(output, layout.nodeID, objectId, ot.name);
@@ -106,7 +126,21 @@
       cwApi.cwEditProperties.appendAssociationSelect(output, layout.nodeID, objectId);
     }
     output.push("</li>");
-    output.push("<li id='", layout.nodeID, "-", objectId, "-value' class='property-details property-value ", layout.nodeID, "-details ", layout.nodeID, "-value ", layout.nodeID, "-", objectId, "-details' ");
+    output.push(
+      "<li id='",
+      layout.nodeID,
+      "-",
+      objectId,
+      "-value' class='property-details property-value ",
+      layout.nodeID,
+      "-details ",
+      layout.nodeID,
+      "-value ",
+      layout.nodeID,
+      "-",
+      objectId,
+      "-details' "
+    );
     if (this.options.CustomOptions["collapse"] === true) {
       output.push('style="display:none;"');
     }
@@ -124,11 +158,19 @@
     if (cwApi.queryObject.isEditMode() && listBoxHtml.className.indexOf("minus") !== -1) {
       return;
     }
-    $("#" + htmlID + "-value").toggle("300", function() {
+    $("#" + htmlID + "-value").toggle("100", function() {
       $("#htmlbox-" + htmlID)
         .toggleClass("fa fa-minus")
         .toggleClass("fa fa-plus");
     });
+    setTimeout(function() {
+      let row = $("#htmlbox-" + htmlID).parents("tr");
+      let uid = row.attr("data-uid");
+      if (row === undefined) return;
+      let box = $("#htmlbox-" + htmlID);
+      box.parents(".collapsible-list-boxcw-visible");
+      $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-boxcw-visible").height() + 20);
+    }, 500);
   };
 
   cwApi.cwLayouts.cwLayoutCollapsibleListBox = cwLayoutCollapsibleListBox;

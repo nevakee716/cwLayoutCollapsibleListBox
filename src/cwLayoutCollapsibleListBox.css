@@ -49,6 +49,9 @@ tr.k-alt ul.property-details .property-title {
 tr.k-alt ul.property-details .property-value {
   border: 1px solid #f1f1f1;
 }
+.k-grid-content ul.property-details .property-title {
+  padding: 0px;
+}
 .k-grid-content div.property-box-asso {
   margin-bottom: 0px;
 }

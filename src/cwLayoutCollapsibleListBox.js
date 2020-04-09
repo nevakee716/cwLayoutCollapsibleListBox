@@ -169,7 +169,7 @@
       if (row === undefined) return;
       let box = $("#htmlbox-" + htmlID);
       box.parents(".collapsible-list-boxcw-visible");
-      $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-boxcw-visible").height());
+      $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-boxcw-visible").height() + 7);
     }, 500);
   };
 

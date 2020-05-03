@@ -165,11 +165,12 @@
     });
     setTimeout(function () {
       let row = $("#htmlbox-" + htmlID).parents("tr");
-      let uid = row.attr("data-uid");
       if (row === undefined) return;
+      let uid = row.attr("data-uid");
+
       let box = $("#htmlbox-" + htmlID);
-      box.parents(".collapsible-list-boxcw-visible");
-      $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-boxcw-visible").height() + 7);
+
+      $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-boxcw-visible").height() + 12);
       setTimeout(function () {
         $('[data-uid="' + uid + '"]').height(box.parents("tr").height());
       }, 500);

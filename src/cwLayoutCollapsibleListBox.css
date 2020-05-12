@@ -1,3 +1,4 @@
+/* CUSTOM VARIABLES */
 /* GLOBAL */
 /* LOGIN */
 /* DIAGRAM */
@@ -11,6 +12,7 @@
 /* LIST BOX */
 /* PROPERTIES GROUP */
 /* BUTTONS */
+@cwbuttonselectedbackgroundcolor :darken (#ffffff, 5%);
 /* PAGE ACTIONS */
 /* ACCORDIONS */
 /* DISCUSSIONS */
@@ -21,15 +23,17 @@
 /* TASKS & NOTIFICATIONS */
 /* GLOBAL SEARCH */
 /* TOP BAR */
-/* GRID */
 /* DIAGRAM TILE */
 /* MATRIX ADVANCED */
+/* DIAGRAM OVERLAY */
 .htmlbox-container .htmlbox-header-icon .htmlbox-header-icon-min {
   background-color: #03a0ce;
 }
 div.property-box ul.htmlbox-container div.htmlbox-header-icon {
   float: left;
-  display: contents;
+  height: inherit;
+  width: inherit;
+  display: flex;
 }
 div.property-box ul.htmlbox-container div.htmlbox-header-icon .fa {
   margin-right: 10px;

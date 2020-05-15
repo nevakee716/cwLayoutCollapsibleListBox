@@ -38,6 +38,9 @@ div.property-box ul.htmlbox-container div.htmlbox-header-icon {
 div.property-box ul.htmlbox-container div.htmlbox-header-icon .fa {
   margin-right: 10px;
 }
+.cw-diagram-popout-container div.property-box ul.htmlbox-container div.htmlbox-header-icon {
+  white-space: pre;
+}
 .k-grid-content div.property-box ul.htmlbox-container .cw-property-details-right {
   width: 0px;
 }

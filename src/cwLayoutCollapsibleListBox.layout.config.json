@@ -1,9 +1,15 @@
 {
   "Name": "collapsible-list-box",
-  "DisplayName": "Collapsible List Box",
+  "DisplayName": "Advanced List Box",
   "Description": "The Simple ul/li list with div/a container for the name is surrounded by a div with the name of the Object Node",
   "JavaScriptClassName": "cwLayoutCollapsibleListBox",
   "Options": [
+    {
+      "Id": "notcollapsible",
+      "DisplayName": "Not Collapsible",
+      "Description": "Check if you want the container to not be collapsible",
+      "Type": 1
+    },
     {
       "Id": "collapse",
       "DisplayName": "Collapse by default",
@@ -13,14 +19,20 @@
     {
       "Id": "title",
       "DisplayName": "Title",
-      "Description": "Check if you want to collapse container",
+      "Description": "Title",
       "Type": 0
     },
     {
       "Id": "title_display",
       "DisplayName": "Display Title only if data",
-      "Description": "Check if you want to collapse container",
+      "Description": "Display Title only if data",
       "Type": 1
+    },
+    {
+      "Id": "complementary-node",
+      "DisplayName": "Complementary Nodes",
+      "Description": "Incadate other node separate by a comma if you want to display them inside this listbox",
+      "Type": 0
     }
   ]
 }

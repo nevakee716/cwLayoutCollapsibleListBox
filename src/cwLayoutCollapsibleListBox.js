@@ -16,6 +16,15 @@
       this.title = cwApi.mapToTranslation(this.mmNode.NodeName);
     }
     this.collapse = this.options.CustomOptions["collapse"];
+    if (this.options.CustomOptions["complementary-node"] == "") {
+      this.complementaryNode = [];
+    } else {
+      try {
+        this.complementaryNode = this.options.CustomOptions["complementary-node"].split(",");
+      } catch (e) {
+        this.complementaryNode = [];
+      }
+    }
   };
 
   cwLayoutCollapsibleListBox.prototype.drawAssociations = function (output, associationTitleText, object) {
@@ -62,9 +71,9 @@
     }
     output.push(" class='property-box ", layout.nodeID, "-node-box property-box-asso collapsible-list-box");
     if (associationTargetNode.length > 0 || cwApi.queryObject.isEditMode()) {
-      output.push("cw-visible");
+      output.push(" cw-visible");
     } else {
-      output.push("cw-hidden");
+      output.push(" cw-hidden");
     }
     output.push("'>");
     output.push('<ul class="htmlbox-container property-details ', layout.nodeID, "-details ", layout.nodeID, "-", objectId, '-details">');
@@ -90,7 +99,7 @@
     output.push('<div class="cw-property-details-left">');
     output.push('<div class="htmlbox-header-icon">');
 
-    if (associationTargetNode.length !== 0) {
+    if (this.options.CustomOptions["notcollapsible"] !== true && associationTargetNode.length !== 0) {
       output.push('<div id="htmlbox-', this.nodeID, "-", objectId, '" class="');
       if (this.options.CustomOptions["collapse"] === true) {
         output.push("fa fa-plus");
@@ -145,8 +154,21 @@
       output.push('style="display:none;"');
     }
     output.push(">");
+
     l = cwApi.cwEditProperties.getLayoutWithTemplateOptions(this);
     l.drawAssociations(output, this.title, object);
+
+    var self = this;
+    // complementary node
+    this.complementaryNode.forEach(function (nodeID) {
+      let compSchema = cwApi.ViewSchemaManager.getNode(self.viewSchema, nodeID);
+
+      var compLayout = new cwApi.cwLayouts[compSchema.LayoutName](compSchema.LayoutOptions, self.viewSchema);
+      cwApi.extend(compLayout, cwApi.cwLayouts.CwLayout, compSchema.LayoutOptions, self.viewSchema);
+      l = cwApi.cwEditProperties.getLayoutWithTemplateOptions(compLayout);
+      l.drawAssociations(output, self.title, object);
+    });
+
     output.push("</li>");
     output.push("</ul>");
     output.push("</div>");
@@ -170,7 +192,7 @@
 
       let box = $("#htmlbox-" + htmlID);
 
-      $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-boxcw-visible").height() + 12);
+      $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-box cw-visible").height() + 12);
       setTimeout(function () {
         $('[data-uid="' + uid + '"]').height(box.parents("tr").height());
       }, 500);

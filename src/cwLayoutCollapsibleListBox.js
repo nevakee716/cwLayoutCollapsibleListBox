@@ -162,7 +162,7 @@
     // complementary node
     this.complementaryNode.forEach(function (nodeID) {
       let compSchema = cwApi.ViewSchemaManager.getNode(self.viewSchema, nodeID);
-
+      if (!compSchema) return;
       var compLayout = new cwApi.cwLayouts[compSchema.LayoutName](compSchema.LayoutOptions, self.viewSchema);
       cwApi.extend(compLayout, cwApi.cwLayouts.CwLayout, compSchema.LayoutOptions, self.viewSchema);
       l = cwApi.cwEditProperties.getLayoutWithTemplateOptions(compLayout);

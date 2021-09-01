@@ -1,7 +1,7 @@
 {
   "name": "cwLayoutCollapsibleListBox",
   "description": "Allow you to expand/collable a list box",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "cwLayoutCollapsibleListBox.js",
   "scripts": {
     "test": ""

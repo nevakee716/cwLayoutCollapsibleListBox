@@ -34,7 +34,7 @@
 
   cwLayoutCollapsibleListBox.prototype.drawListBox = function (output, object) {
     var l, listBoxNameFromNode, associationTypeScriptName, associationTargetNode, objectId, canAddAssociation, ot, nodeSchema, layout;
-
+    var self = this;
     layout = this;
     nodeSchema = this.mmNode;
 
@@ -70,7 +70,15 @@
       objectId = Math.floor(Math.random() * 10000000);
     }
     output.push(" class='property-box ", layout.nodeID, "-node-box property-box-asso collapsible-list-box");
-    if (associationTargetNode.length > 0 || cwApi.queryObject.isEditMode()) {
+
+    if (
+      associationTargetNode.length > 0 ||
+      cwApi.queryObject.isEditMode() ||
+      (this.complementaryNode &&
+        this.complementaryNode.some(function (nodeID) {
+          return object.associations && object.associations[nodeID] && object.associations[nodeID].length > 0;
+        }))
+    ) {
       output.push(" cw-visible");
     } else {
       output.push(" cw-hidden");
@@ -158,7 +166,6 @@
     l = cwApi.cwEditProperties.getLayoutWithTemplateOptions(this);
     l.drawAssociations(output, this.title, object);
 
-    var self = this;
     // complementary node
     this.complementaryNode.forEach(function (nodeID) {
       let compSchema = cwApi.ViewSchemaManager.getNode(self.viewSchema, nodeID);

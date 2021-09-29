@@ -191,6 +191,13 @@
       $("#htmlbox-" + htmlID)
         .toggleClass("fa fa-minus")
         .toggleClass("fa fa-plus");
+      $("#htmlbox-" + htmlID)
+        .parent()
+        .parent()
+        .parent()
+        .parent()
+        .parent()
+        .toggleClass("collapsed");
     });
     setTimeout(function () {
       let row = $("#htmlbox-" + htmlID).parents("tr");

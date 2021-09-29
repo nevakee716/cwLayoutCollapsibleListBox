@@ -28,6 +28,10 @@
 .htmlbox-container .htmlbox-header-icon .htmlbox-header-icon-min {
   background-color: #03a0ce;
 }
+.collapsible-list-box.collapsed {
+  height: -moz-max-content;
+  height: fit-content;
+}
 div.property-box ul.htmlbox-container div.htmlbox-header-icon {
   float: left;
   height: inherit;

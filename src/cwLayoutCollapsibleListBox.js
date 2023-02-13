@@ -182,8 +182,15 @@
   };
 
   cwLayoutCollapsibleListBox.click = function (htmlID) {
-    var listBoxHtml = document.getElementById("htmlbox-" + htmlID);
-    var isShrinking = listBoxHtml.className.indexOf("minus") !== -1;
+    const listBoxHtml = document.getElementById("htmlbox-" + htmlID);
+    const isShrinking = listBoxHtml.className.indexOf("minus") !== -1;
+    const box = $("#htmlbox-" + htmlID);
+    const row = $("#htmlbox-" + htmlID).parents("tr");
+    const uid = row.attr("data-uid");
+    cwLayoutCollapsibleListBox.heights = cwLayoutCollapsibleListBox.heights ?? {};
+    cwLayoutCollapsibleListBox.heights[uid] = cwLayoutCollapsibleListBox.heights[uid] ?? box.parents("tr").height();
+    const height =  cwLayoutCollapsibleListBox.heights[uid];
+
     if (cwApi.queryObject.isEditMode() && isShrinking) {
       return;
     }
@@ -200,16 +207,21 @@
         .toggleClass("collapsed");
     });
     setTimeout(function () {
-      let row = $("#htmlbox-" + htmlID).parents("tr");
+     
       if (row === undefined) return;
-      let uid = row.attr("data-uid");
-
       let box = $("#htmlbox-" + htmlID);
 
-      $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-box cw-visible").height() + 12);
-      setTimeout(function () {
-        $('[data-uid="' + uid + '"]').height(box.parents("tr").height());
-      }, 500);
+      if(!isShrinking){
+        $('[data-uid="' + uid + '"]').height(box.parents(".collapsible-list-box cw-visible").height() + 12);
+        setTimeout(function () {
+          if(!isShrinking){
+            $('[data-uid="' + uid + '"]').height(box.parents("tr").height());
+          }}, 500);
+      } else {
+        $('[data-uid="' + uid + '"]').height(height);
+      }
+
+
     }, 500);
   };
 
